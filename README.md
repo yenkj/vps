@@ -155,6 +155,14 @@ linuxserver/emby:arm64v8-latest
 docker ps -a
 docker container update -m 800M --memory-swap=2048M 26caa2084196
 ```
+```
+docker create \
+--name=emby \
+--device \
+/dev/dri:/dev/dri \
+emby/embyserver:latest
+```
+
 ## Aria2和ariang
 - Aria2
 ```
