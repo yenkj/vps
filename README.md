@@ -155,6 +155,11 @@ linuxserver/emby:arm64v8-latest
 docker ps -a
 docker container update -m 800M --memory-swap=2048M 26caa2084196
 ```
+## 进入docker
+```
+docker ps -a
+docker exec -it abe31ff51ddd /bin/bash
+```
 ## DSM的Emby
 ```
 docker run \
