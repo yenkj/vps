@@ -155,11 +155,27 @@ linuxserver/emby:arm64v8-latest
 docker ps -a
 docker container update -m 800M --memory-swap=2048M 26caa2084196
 ```
+## DSM的Emby
 ```
-docker create \
---name=emby \
---device \
-/dev/dri:/dev/dri \
+docker run \
+-d \
+--net=host \
+--name=emby2 \
+--device /dev/dri:/dev/dri \
+-e UID=0 \
+-e GID=0 \
+-e GIDLIST=0 \
+-e TZ=Asia/Shanghai  \
+-p 1900:1900 \
+-p 7359:7359 \
+-p 7359:7359/udp \
+-p 8096:8096 \
+-p 8920:8920 \
+-v /volume1/docker/emby/config:/config \
+-v /volume1/docker/emby/dashboard-ui:/system/dashboard-ui \
+-v /volume1/DSM/emby/share:/mnt/share \
+-v /dev/shm:/dev/shm \
+--restart=always \
 emby/embyserver:latest
 ```
 
