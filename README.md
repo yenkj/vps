@@ -161,7 +161,7 @@ docker run \
 -d \
 --net=host \
 --name=emby \
--m 4G
+-m 2G
 --device /dev/dri:/dev/dri \
 -e UID=0 \
 -e GID=0 \
