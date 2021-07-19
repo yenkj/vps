@@ -160,7 +160,8 @@ docker container update -m 800M --memory-swap=2048M 26caa2084196
 docker run \
 -d \
 --net=host \
---name=emby2 \
+--name=emby \
+-d -m4G
 --device /dev/dri:/dev/dri \
 -e UID=0 \
 -e GID=0 \
