@@ -162,6 +162,9 @@ docker exec -it abe31ff51ddd /bin/bash
 ```
 ## DSM的Emby
 ```
+hypervisor.cpuid.v0
+```
+```
 docker run \
 -d \
 --net=host \
