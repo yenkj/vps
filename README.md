@@ -110,7 +110,7 @@ rclone mount banana:share /mnt/sda3/docker/emby/share \
 --allow-other \
 --vfs-cache-mode writes \
 --dir-cache-time 25h \
---buffer-size 0M \
+--buffer-size 512M \
 --vfs-read-chunk-size 128M \
 --vfs-read-chunk-size-limit 1G &
 ```
