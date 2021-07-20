@@ -166,7 +166,7 @@ hypervisor.cpuid.v0
 ```
 ```
 vim /etc/crontab
-rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other   --dir-cache-time 12h  >/dev/null 2>&1 &
+@reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other   --dir-cache-time 12h  >/dev/null 2>&1 &
 ```
 ```
 docker run \
