@@ -187,6 +187,28 @@ docker run \
 --restart=always \
 emby/embyserver:latest
 ```
+## dxz的Emby
+```
+docker run \
+-d \
+--net=host \
+--name=emby00 \
+-m 2G \
+--device /dev/dri:/dev/dri \
+-e UID=0 \
+-e GID=0 \
+-e GIDLIST=0 \
+-e TZ=Asia/Shanghai  \
+-p 1900:1900 \
+-p 7359:7359 \
+-p 7359:7359/udp \
+-p 8096:8096 \
+-p 8920:8920 \
+-v /volume1/docker/emby00/emby/config:/config \
+-v /volume1/DSM/emby/00:/00 \
+-v /dev/shm:/dev/shm \
+emby/embyserver:latest
+```
 
 ## Aria2和ariang
 - Aria2
