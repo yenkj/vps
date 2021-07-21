@@ -169,6 +169,9 @@ vim /etc/crontab
 @reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other   --dir-cache-time 12h  >/dev/null 2>&1 &
 ```
 ```
+docker exec -it a637ab2b96fe /bin/sh
+```
+```
 docker run \
 -d \
 --net=host \
@@ -185,11 +188,10 @@ docker run \
 -p 8096:8096 \
 -p 8920:8920 \
 -v /volume1/docker/emby/config:/config \
--v /volume1/docker/emby/s/system/dashboard-ui:/system/dashboard-ui \
+-v /volume1/docker/emby/system/dashboard-ui:/system/dashboard-ui \
+-v /volume1/docker/emby/system/traystrings:/system/traystrings \
+-v /volume1/docker/emby/system/Emby.Web.dll:/system/Emby.Web.dll \
 -v /volume1/DSM/emby/share:/mnt/share \
--v /volume1/docker/emby/s/system/traystrings:/system/traystrings \
--v /volume1/docker/emby/s/system/Emby.Web.dll:/system/Emby.Web.dll \
--v /volume1/docker/emby/s/system/plugins:/system/plugins \
 -v /dev/shm:/dev/shm \
 --restart=always \
 emby/embyserver:latest
