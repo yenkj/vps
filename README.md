@@ -189,6 +189,7 @@ docker run \
 -v /volume1/DSM/emby/share:/mnt/share \
 -v /volume1/docker/emby/s/system/traystrings:/system/traystrings \
 -v /volume1/docker/emby/s/system/Emby.Web.dll:/system/Emby.Web.dll \
+-v /volume1/docker/emby/s/system/plugins:/system/plugins \
 -v /dev/shm:/dev/shm \
 --restart=always \
 emby/embyserver:latest
