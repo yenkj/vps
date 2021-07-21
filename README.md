@@ -185,8 +185,10 @@ docker run \
 -p 8096:8096 \
 -p 8920:8920 \
 -v /volume1/docker/emby/config:/config \
--v /volume1/docker/emby/dashboard-ui:/system/dashboard-ui \
+-v /volume1/docker/emby/s/system/dashboard-ui:/system/dashboard-ui \
 -v /volume1/DSM/emby/share:/mnt/share \
+-v /volume1/docker/emby/s/system/traystrings:/system/traystrings \
+-v /volume1/docker/emby/s/system/Emby.Web.dll:/system/Emby.Web.dll \
 -v /dev/shm:/dev/shm \
 --restart=always \
 emby/embyserver:latest
