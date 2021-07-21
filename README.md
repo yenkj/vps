@@ -72,6 +72,10 @@ rclone config
 ```
 - 挂载
 ```
+cd /d d:\rclone
+rclone authorize "onedrive"
+```
+```
 mkdir /home/wwwroot/Cloud
 
 rclone mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
