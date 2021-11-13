@@ -69,7 +69,7 @@ rm -rf master.zip DirectoryLister-master
 docker run \
 -d \
 --name=aliyundrive-webdav \
---restart=unless-stopped \
+--restart=always \
 -p 8080:8080 \
 -v /volume1/DSM/emby/aliyun/:/etc/aliyundrive-webdav/ \
 -e REFRESH_TOKEN='2f7766281d7b43629db5c560fe22a14e' \
