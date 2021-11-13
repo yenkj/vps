@@ -64,6 +64,19 @@ cp -r  /home/wwwroot/domain.com/DirectoryLister-master/* /home/wwwroot/domain.co
 
 rm -rf master.zip DirectoryLister-master
 ```
+## aliyundrive-webdav
+```
+docker run \
+-d \
+--name=aliyundrive-webdav \
+--restart=unless-stopped \
+-p 8080:8080 \
+-v /volume1/DSM/emby/aliyun/:/etc/aliyundrive-webdav/ \
+-e REFRESH_TOKEN='2f7766281d7b43629db5c560fe22a14e' \
+-e WEBDAV_AUTH_USER=yankj \
+-e WEBDAV_AUTH_PASSWORD=ykj123456 \
+messense/aliyundrive-webdav
+```
 ## rclone
 ```
 wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh
