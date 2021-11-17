@@ -1,5 +1,12 @@
 # README
-如果你不知道怎么使用这个工具，请看[这个视频](https://www.youtube.com/watch?v=1Pm2gzSDaX0)。
+
+#阿里云盘挂载
+```
+rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
+
+rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
+
+```
 
 Good luck, guys!
 
