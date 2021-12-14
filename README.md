@@ -216,6 +216,8 @@ docker run \
 -v /volume1/docker/emby/system/dashboard-ui:/system/dashboard-ui \
 -v /volume1/docker/emby/system/traystrings:/system/traystrings \
 -v /volume1/docker/emby/system/Emby.Web.dll:/system/Emby.Web.dll \
+-v /volume1/docker/emby/system/MediaBrowser.Model.dll:/system/MediaBrowser.Model.dll \
+-v /volume1/docker/emby/system/Emby.Server.Implementations.dll:/system/Emby.Server.Implementations.dll \
 -v /volume1/DSM/emby/share:/mnt/share \
 -v /dev/shm:/dev/shm \
 --restart=always \
