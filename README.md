@@ -312,3 +312,9 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gd-utils/master
 请输入转存默认目的地团队盘ID(不指定转存目的地默认改地址，脚本强制要求输入团队盘ID)并回车
    
    Your Google Team Drive ID =>:0AO4-CX_XxBu3Uk9PVA
+   
+   
+## 流媒体解锁检测
+```
+bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh) -M -4
+```
