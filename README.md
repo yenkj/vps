@@ -141,6 +141,7 @@ rclone mount banana:share /mnt/sda3/docker/emby/share \
 
 ## Emby恢复
 ``` 
+zip -r emby.zip emby
 systemctl stop emby-server
 rm -rf /var/lib/emby
 rclone copy banana:share/emby.zip /var/lib -v
