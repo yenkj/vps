@@ -257,7 +257,7 @@ wget -N git.io/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 - 配置文件
 ```
 https://raw.githubusercontent.com/yenkj/ssr_subscrible_tool/master/aria2.conf
-https://raw.githubusercontent.com/yenkj/ssr_subscrible_tool/master/upload.sh
+https://raw.githubusercontent.com/yenkj/ssr_subscrible_tool/master/script.conf
 ```
 - ariang
 ```
