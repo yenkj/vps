@@ -283,6 +283,12 @@ bash tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
 `wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.com/yenkj/V2Ray_ws-tls_bash_onekey/master/install.sh" && chmod +x install.sh && bash install.sh`
 
 - 证书位置 `/root/.acme.sh/`
+- 
+## pikpak-webdav
+```
+docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='ykj1993119' ykxvk8yl5l/pikpak-webdav:latest
+docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="ykj1993119" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
+```
 
 ## SSR订阅地址
 https://quirky-bardeen-bde2df.netlify.com/
