@@ -326,3 +326,11 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gd-utils/master
 ```
 bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh) -M -4
 ```
+
+```
+[Script]
+EmbyPremiere = type=http-response,script-path=https://gitlab.com/iptv-org/embypublic/-/raw/master/Script/EmbyPremiere.js,pattern=^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice,max-size=131072,requires-body=true,timeout=10,enable=true
+
+[MITM]
+hostname = mb3admin.com
+```
