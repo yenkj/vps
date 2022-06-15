@@ -215,9 +215,12 @@ docker run \
 -p 8096:8096 \
 -p 8920:8920 \
 -v /volume1/docker/emby/config:/config \
--v /volume1/docker/emby/system/dashboard-ui:/system/dashboard-ui \
 -v /volume1/docker/emby/system/traystrings:/system/traystrings \
+-v /volume1/docker/emby/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js:/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js \
+-v /volume1/docker/emby/system/dashboard-ui/embypremiere/embypremiere.js:/system/dashboard-ui/embypremiere/embypremiere.js \
 -v /volume1/docker/emby/system/Emby.Web.dll:/system/Emby.Web.dll \
+-v /volume1/docker/emby/system/Emby.Server.Implementations.dll:/system/Emby.Server.Implementations.dll \
+-v /volume1/docker/emby/system/MediaBrowser.Model.dll:/system/MediaBrowser.Model.dll \
 -v /volume1/DSM/emby/share:/mnt/share \
 -v /dev/shm:/dev/shm \
 --restart=always \
