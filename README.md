@@ -196,7 +196,7 @@ vim /etc/crontab
 @reboot root sleep 60;rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
 ```
 ```
-docker exec -it a637ab2b96fe /bin/sh
+docker exec -it d53ce7efac1a /bin/sh
 ```
 ```
 docker run \
