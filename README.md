@@ -49,7 +49,7 @@ rclone config
 ```
 cd /d d:\rclone
 rclone authorize "onedrive"
-```
+rclone authorize "drive" "eyJzY29wZSI6ImRyaXZlIn0"
 ```
 mkdir /home/wwwroot/Cloud
 
