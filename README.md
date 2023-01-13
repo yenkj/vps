@@ -12,6 +12,9 @@ curl https://get.acme.sh | sh
 更换你的解析域名
 
 ~/.acme.sh/acme.sh --installcert -d xxxx.xxxx.xxx --key-file /root/private.key --fullchain-file /root/cert.crt 
+## 安装X-ui面板
+
+bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 
 ```
 
