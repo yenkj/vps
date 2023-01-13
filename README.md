@@ -23,8 +23,6 @@ rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cac
 
 ```
 
-Good luck, guys!
-
 # SSR节点列表生成器
 > 适配ios版shadowrocket，PC或Mac版小飞机,
 
