@@ -1,4 +1,19 @@
 # README
+#安装SSL证书
+```
+apt update -y
+apt install -y curl
+apt install -y socat
+curl https://get.acme.sh | sh
+~/.acme.sh/acme.sh --register-account -m xxx@xxx.xxx
+
+~/.acme.sh/acme.sh --issue -d xxxx.xxxx.xxx --standalone
+
+更换你的解析域名
+
+~/.acme.sh/acme.sh --installcert -d xxxx.xxxx.xxx --key-file /root/private.key --fullchain-file /root/cert.crt 
+
+```
 
 #阿里云盘挂载
 ```
