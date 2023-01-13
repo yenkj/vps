@@ -6,11 +6,8 @@ apt install -y curl
 apt install -y socat
 curl https://get.acme.sh | sh
 ~/.acme.sh/acme.sh --register-account -m xxx@xxx.xxx
-
 ~/.acme.sh/acme.sh --issue -d xxxx.xxxx.xxx --standalone
-
 更换你的解析域名
-
 ~/.acme.sh/acme.sh --installcert -d xxxx.xxxx.xxx --key-file /root/private.key --fullchain-file /root/cert.crt 
 ```
 ## 安装X-ui面板
@@ -18,7 +15,6 @@ curl https://get.acme.sh | sh
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 
 ```
-
 ## 阿里云盘挂载
 ```
 rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
@@ -26,68 +22,10 @@ rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-ot
 rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
 
 ```
-
-# SSR节点列表生成器
-> 适配ios版shadowrocket，PC或Mac版小飞机,
-
-## 说明
-- `/dist `位节点生成的目录,这个目录是给[netlify](https://app.netlify.com/)应用的
-- `node.txt`为SS或SSR节点列表文件(支持类bash脚本注释，举个栗子: `# 注释`)
-- `app.js`为项目的核心逻辑
-
-如果你有什么问题，Please open an issues
-
-
-## 更新说明
-- 支持SS或者SSR
-
-## 问题
-- 据反映安卓或者Windows客户端可能无法订阅成功，请为添加的每一个节点设置相同的**分组**
-
-
 ## VPS一键添加/删除Swap虚拟内存
 
 ``wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh``
 
-## H5ai
-```
-apt-get install git -y
-
-git clone https://github.com/wulabing/h5ai_onekey_install-lnp-.git h5ai
-
-cd h5ai
-
-Debian 8运行命令
-
-bash h5ai.sh
- 
-Debian 9运行命令
-
-sed -i '53,54d' h5ai.sh && bash h5ai.sh
-```
-
-- H5ai修改版
-```
-mkdir /home/wwwroot/Cloud
-
-cd /home/wwwroot
-
-wget https://github.com/Pearlulu/h5ai_dplayer/archive/master.zip && unzip master.zip
-
-cp -r  /home/wwwroot/h5ai_dplayer-master/* /home/wwwroot
-
-rm -rf master.zip h5ai_dplayer-master hls_aria2.sh subtovtt.sh hls_general.sh README.md
-```
-## DirectoryLister
-```
-wget https://www.moerats.com/usr/shell/DirectoryLister_ssl.sh && bash DirectoryLister_ssl.sh
-
-wget https://github.com/yenkj/DirectoryLister/archive/master.zip && unzip master.zip
-
-cp -r  /home/wwwroot/domain.com/DirectoryLister-master/* /home/wwwroot/domain.com
-
-rm -rf master.zip DirectoryLister-master
-```
 ## aliyundrive-webdav
 ```
 docker run \
@@ -309,7 +247,45 @@ bash tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='ykj1993119' ykxvk8yl5l/pikpak-webdav:latest
 docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="ykj1993119" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
 ```
+## H5ai
+```
+apt-get install git -y
 
+git clone https://github.com/wulabing/h5ai_onekey_install-lnp-.git h5ai
+
+cd h5ai
+
+Debian 8运行命令
+
+bash h5ai.sh
+ 
+Debian 9运行命令
+
+sed -i '53,54d' h5ai.sh && bash h5ai.sh
+```
+
+- H5ai修改版
+```
+mkdir /home/wwwroot/Cloud
+
+cd /home/wwwroot
+
+wget https://github.com/Pearlulu/h5ai_dplayer/archive/master.zip && unzip master.zip
+
+cp -r  /home/wwwroot/h5ai_dplayer-master/* /home/wwwroot
+
+rm -rf master.zip h5ai_dplayer-master hls_aria2.sh subtovtt.sh hls_general.sh README.md
+```
+## DirectoryLister
+```
+wget https://www.moerats.com/usr/shell/DirectoryLister_ssl.sh && bash DirectoryLister_ssl.sh
+
+wget https://github.com/yenkj/DirectoryLister/archive/master.zip && unzip master.zip
+
+cp -r  /home/wwwroot/domain.com/DirectoryLister-master/* /home/wwwroot/domain.com
+
+rm -rf master.zip DirectoryLister-master
+```
 ## SSR订阅地址
 https://quirky-bardeen-bde2df.netlify.com/
 ## GD百宝箱
