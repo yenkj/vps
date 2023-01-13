@@ -22,10 +22,6 @@ rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-ot
 rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
 
 ```
-## VPS一键添加/删除Swap虚拟内存
-
-``wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh``
-
 ## aliyundrive-webdav
 ```
 docker run \
@@ -231,7 +227,8 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 
 ## nginx
 - 重载nginx `systemctl reload nginx`      
-- nginx文件夹 `/etc/nginx/conf/conf.d`         
+- nginx文件夹 `/etc/nginx/conf/conf.d`
+- 证书位置 `/root/.acme.sh/`
 ## openvz bbr
 ```
 wget https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
@@ -240,13 +237,14 @@ bash tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
 ## openvz v2ray
 `wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.com/yenkj/V2Ray_ws-tls_bash_onekey/master/install.sh" && chmod +x install.sh && bash install.sh`
 
-- 证书位置 `/root/.acme.sh/`
-- 
 ## pikpak-webdav
 ```
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='ykj1993119' ykxvk8yl5l/pikpak-webdav:latest
 docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="ykj1993119" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
 ```
+## VPS一键添加/删除Swap虚拟内存
+
+``wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh``
 ## H5ai
 ```
 apt-get install git -y
