@@ -229,6 +229,32 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 - 重载nginx `systemctl reload nginx`      
 - nginx文件夹 `/etc/nginx/conf.d`
 - 证书位置 `/root/.acme.sh/`
+- 反代实现第三方播放器
+```
+docker run --name=nginx-m -p 8099:80 -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
+```
+```
+server {
+    listen 80;
+    server_name us.199301.xyz;   
+    location / {
+    proxy_redirect off;  
+        proxy_set_header Host $host;  
+        proxy_set_header X-Real-IP $remote_addr;  
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+		proxy_read_timeout 240s; 
+        proxy_pass http://192.168.2.189:8096/;  
+    if ( $request_uri ~* /Users/(.*)/Items/\d\d\d+.\?X-Emby-Client )
+    {
+	proxy_pass http://192.168.2.189:12345;
+    }
+    if ( $request_uri ~* redirect2player )
+    {
+	return 301 $arg_infuseurl;
+    }
+      }
+}
+```
 ## openvz bbr
 ```
 wget https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt-multiNIC.sh
