@@ -227,7 +227,7 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 
 ## nginx
 - 重载nginx `systemctl reload nginx`      
-- nginx文件夹 `/etc/nginx/conf/conf.d`
+- nginx文件夹 `/etc/nginx/conf.d`
 - 证书位置 `/root/.acme.sh/`
 ## openvz bbr
 ```
