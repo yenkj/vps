@@ -234,6 +234,22 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 docker run --name=nginx-m -p 8099:80 -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
 ```
 ```
+cat > /etc/systemd/system/ExternalUrl.service <<EOF
+[Unit]
+Description=ExternalUrl
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=nohup python3 /root/ExternalUrl.py  > /root/ExternalUrl.log 2>&1 &
+Restart=on-abort
+User=root
+
+[Install]
+WantedBy=default.target
+EOF
+```
+```
 server {
     listen 80;
     server_name us.199301.xyz;   
