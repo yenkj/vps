@@ -100,6 +100,13 @@ unzip emby.zip
 chown -R emby:emby /var/lib/emby
 reboot
 ```
+```
+    <link rel='stylesheet' id='theme-css'  href='style.css' type='text/css' media='all' />
+    <script src="common-utils.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="md5.min.js"></script>
+    <script src="main.js"></script>
+ ```
 ## Plex恢复
 ```
 systemctl stop plexmediaserver.service
