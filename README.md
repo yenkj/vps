@@ -157,6 +157,18 @@ vim /etc/crontab
 docker exec -it d53ce7efac1a /bin/sh
 ```
 ```
+docker run -d \
+--name navidrome \
+--restart=always \
+-e UID=0 \
+-e GID=0 \
+-v /volume1//DSM/emby/share/music:/music \
+-v /volume1//docker/emby/data:/data \
+-p 4533:4533 \
+-e ND_LOGLEVEL=info \
+deluan/navidrome:latest
+```
+```
 docker run \
 -d \
 --net=host \
