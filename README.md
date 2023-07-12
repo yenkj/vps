@@ -30,7 +30,7 @@ docker run \
 --restart=always \
 -p 8080:8080 \
 -v /volume1/DSM/emby/aliyun/:/etc/aliyundrive-webdav/ \
--e REFRESH_TOKEN='5ed114e4213840dc84a350951d407367' \
+-e REFRESH_TOKEN='eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjZGM4ZjUxNGQxZWM0N2ZlOTk3MzA4NjkyY2M3YWJkMSIsImF1ZCI6IjczZTYxMTgzMWE3YzRkODdhYzQ5Yzg0ODFiZjlmMmM0IiwiZXhwIjoxNjk2OTM2MzQ4LCJpYXQiOjE2ODkxNjAzNDh9.Ywdx3q7UAX0wbdal78vR6yeoC3mhCRUjraKWjvjpvo5oWn3kWWn0eODuPhsaTLU3ALcx7txEiHUEBcIWUkVCyw' \
 -e WEBDAV_AUTH_USER=yankj \
 -e WEBDAV_AUTH_PASSWORD=ykj123456 \
 messense/aliyundrive-webdav
