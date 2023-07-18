@@ -220,6 +220,15 @@ docker run \
 -v /dev/shm:/dev/shm \
 emby/embyserver:latest
 ```
+## chatgpt
+```
+docker run \
+--name chatgpt-web \
+-p 3002:3002 \
+--restart=always \
+--env OPENAI_ACCESS_TOKEN= \
+ykj363963169/chatgpt-web:latest
+```
 
 ## Aria2和ariang
 - Aria2
