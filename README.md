@@ -222,6 +222,9 @@ emby/embyserver:latest
 ```
 ## chatgpt
 ```
+https://chat.openai.com/api/auth/session
+````
+```
 docker run \
 --name chatgpt-web \
 -p 3002:3002 \
