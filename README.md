@@ -230,11 +230,14 @@ docker run \
 -p 3002:3002 \
 --restart=always \
 --env OPENAI_ACCESS_TOKEN= \
---env API_REVERSE_PROXY=http://192.168.2.189:3999/backend-api/conversation
+--env API_REVERSE_PROXY=http://192.168.2.189:7999/backend-api/conversation \
 ykj363963169/chatgpt-web:latest
 ```
 ```
-docker run -d -p 7999:7999 --name=ninja \
+docker run \
+-p 7999:7999 \
+--restart=always \
+--name=ninja \
 -e TZ=Asia/Shanghai \
 gngpp/ninja:latest run
 ```
