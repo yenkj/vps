@@ -241,7 +241,9 @@ docker run \
 -e TZ=Asia/Shanghai \
 gngpp/ninja:latest run
 ```
-
+```
+http://ip:port/har/upload
+```
 
 ## Aria2和ariang
 - Aria2
