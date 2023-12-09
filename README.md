@@ -151,7 +151,7 @@ hypervisor.cpuid.v0
 vim /etc/crontab
 @reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
 @reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
-@reboot root sleep 60;rclone mount pikpak:share /volume1/DSM/emby/sharep  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
+@reboot root rclone mount pikpak:share /volume1/DSM/emby/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
 ```
 ```
 docker exec -it d53ce7efac1a /bin/sh
