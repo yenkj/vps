@@ -195,6 +195,7 @@ docker run \
 -v /volume1/docker/emby/system/Emby.Server.Implementations.dll:/system/Emby.Server.Implementations.dll \
 -v /volume1/docker/emby/system/MediaBrowser.Model.dll:/system/MediaBrowser.Model.dll \
 -v /volume1/DSM/emby/share:/mnt/share \
+-v /volume1/DSM/emby/sharep:/mnt/sharep \
 -v /dev/shm:/dev/shm \
 --restart=always \
 emby/embyserver:latest
