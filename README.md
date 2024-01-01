@@ -148,6 +148,7 @@ docker exec -it abe31ff51ddd /bin/bash
 hypervisor.cpuid.v0
 ```
 ```
+sudo ln -s /bin/fusermount /bin/fusermount3
 vim /etc/crontab
 @reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
 @reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
