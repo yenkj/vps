@@ -204,9 +204,8 @@ chmod +x script.sh
 ```
 docker exec emby /bin/sh /system/dashboard-ui/crx/script.sh
 ```
-crontab -e
 ```
-0 0 * * * docker exec -it emby /system/dashboard-ui/crx/script.sh > /dev/null 2>&1
+0 0 * * * docker exec emby /bin/sh /system/dashboard-ui/crx/script.sh > /dev/null 2>&1
 ```
 ## dxz的Emby
 ```
