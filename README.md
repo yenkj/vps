@@ -185,7 +185,7 @@ docker run \
 -p 8920:8920 \
 -v /volume1/docker/emby/config:/config \
 -v /volume1/docker/emby/system/traystrings:/system/traystrings \
--v /volume1/docker/emby/system/dashboard-ui/emby-crx:/system/dashboard-ui/emby-crx \
+-v /volume1/docker/emby/system/dashboard-ui/crx:/system/dashboard-ui/crx \
 -v /volume1/docker/emby/system/dashboard-ui/index.html:/system/dashboard-ui/index.html \
 -v /volume1/docker/emby/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js:/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js \
 -v /volume1/docker/emby/system/dashboard-ui/embypremiere/embypremiere.js:/system/dashboard-ui/embypremiere/embypremiere.js \
