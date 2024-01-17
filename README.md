@@ -322,6 +322,9 @@ server {
     {
 	return 301 $arg_infuseurl;
     }
+     if ($args ~ (^|.*)&MaxStreamingBitrate=\d*(.*)) {
+            set $args $1&MaxStreamingBitrate=900000000$2;
+        }
       }
 }
 ```
