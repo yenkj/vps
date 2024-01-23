@@ -208,6 +208,47 @@ docker exec emby /bin/sh /system/dashboard-ui/crx/script.sh
 ```
 0 0 * * * docker exec emby /bin/sh /system/dashboard-ui/crx/script.sh > /dev/null 2>&1
 ```
+## nginx
+- 重载nginx `systemctl reload nginx`      
+- nginx文件夹 `/etc/nginx/conf.d`
+- 证书位置 `/root/.acme.sh/`
+- 反代实现第三方播放器
+```
+docker run --name=nginx-m -p 8099:80 -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
+```
+```
+sleep 60&python3 /root/ExternalUrl.py  > /root/ExternalUrl.log 2>&1 &
+```
+```
+server {
+    listen 80;
+    server_name us.199301.xyz;   
+    location / {
+    proxy_redirect off;  
+        proxy_set_header Host $host;  
+        proxy_set_header X-Real-IP $remote_addr;  
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+		proxy_read_timeout 240s; 
+        proxy_pass http://192.168.2.189:8096/;  
+    if ( $request_uri ~* /Users/(.*)/Items/\d\d\d+.\?X-Emby-Client )
+    {
+	proxy_pass http://192.168.2.189:12345;
+    }
+    if ( $request_uri ~* redirect2player )
+    {
+	return 301 $arg_infuseurl;
+    }
+     if ($args ~ (^|.*)&MaxStreamingBitrate=\d*(.*)) {
+            set $args $1&MaxStreamingBitrate=1600000000$2;
+        }
+      }
+}
+```
+## pikpak-webdav
+```
+docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
+docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="*******" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
+```
 ## dxz的Emby
 ```
 docker run \
@@ -280,48 +321,6 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 - 给予权限 `chmod +x /root/.aria2c/upload.sh`
 - 重启aria2 `/etc/init.d/aria2 restart`
 
-
-## nginx
-- 重载nginx `systemctl reload nginx`      
-- nginx文件夹 `/etc/nginx/conf.d`
-- 证书位置 `/root/.acme.sh/`
-- 反代实现第三方播放器
-```
-docker run --name=nginx-m -p 8099:80 -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
-```
-```
-sleep 60&python3 /root/ExternalUrl.py  > /root/ExternalUrl.log 2>&1 &
-```
-```
-server {
-    listen 80;
-    server_name us.199301.xyz;   
-    location / {
-    proxy_redirect off;  
-        proxy_set_header Host $host;  
-        proxy_set_header X-Real-IP $remote_addr;  
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
-		proxy_read_timeout 240s; 
-        proxy_pass http://192.168.2.189:8096/;  
-    if ( $request_uri ~* /Users/(.*)/Items/\d\d\d+.\?X-Emby-Client )
-    {
-	proxy_pass http://192.168.2.189:12345;
-    }
-    if ( $request_uri ~* redirect2player )
-    {
-	return 301 $arg_infuseurl;
-    }
-     if ($args ~ (^|.*)&MaxStreamingBitrate=\d*(.*)) {
-            set $args $1&MaxStreamingBitrate=1600000000$2;
-        }
-      }
-}
-```
-## pikpak-webdav
-```
-docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
-docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="*******" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
-```
 ## VPS一键添加/删除Swap虚拟内存
 
 ``wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh``
