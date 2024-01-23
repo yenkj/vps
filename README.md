@@ -289,20 +289,7 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 docker run --name=nginx-m -p 8099:80 -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
 ```
 ```
-cat > /etc/systemd/system/ExternalUrl.service <<EOF
-[Unit]
-Description=ExternalUrl
-After=network-online.target
-
-[Service]
-Type=simple
-ExecStart=nohup python3 /root/ExternalUrl.py  > /root/ExternalUrl.log 2>&1 &
-Restart=on-abort
-User=root
-
-[Install]
-WantedBy=default.target
-EOF
+sleep 60&python3 /root/ExternalUrl.py  > /root/ExternalUrl.log 2>&1 &
 ```
 ```
 server {
@@ -324,7 +311,7 @@ server {
 	return 301 $arg_infuseurl;
     }
      if ($args ~ (^|.*)&MaxStreamingBitrate=\d*(.*)) {
-            set $args $1&MaxStreamingBitrate=900000000$2;
+            set $args $1&MaxStreamingBitrate=1600000000$2;
         }
       }
 }
