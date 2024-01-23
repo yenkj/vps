@@ -53,6 +53,7 @@ vim /etc/crontab
 ```
 docker exec -it emby /bin/sh
 ```
+```
 docker run \
 -d \
 --net=host \
