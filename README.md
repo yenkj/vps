@@ -102,7 +102,7 @@ docker exec emby /bin/sh /system/dashboard-ui/crx/script.sh
 docker run --name=nginx-m -p 8099:80 -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
 ```
 ```
-sleep 60&python3 /root/ExternalUrl.py  > /root/ExternalUrl.log 2>&1 &
+sleep 60;nohup python3 ExternalUrl.py  > ExternalUrl.log 2>&1 &
 ```
 ```
 server {
