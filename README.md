@@ -51,7 +51,7 @@ vim /etc/crontab
 @reboot root sleep 60;docker start emby
 ```
 ```
-docker exec -it d53ce7efac1a /bin/sh
+docker exec -it emby /bin/sh
 ```
 docker run \
 -d \
@@ -131,6 +131,7 @@ server {
 ## pikpak-webdav
 ```
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
+
 docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="*******" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
 ```
 ## chatgpt
