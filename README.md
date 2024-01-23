@@ -328,30 +328,6 @@ Debian 9运行命令
 sed -i '53,54d' h5ai.sh && bash h5ai.sh
 ```
 
-- H5ai修改版
-```
-mkdir /home/wwwroot/Cloud
-
-cd /home/wwwroot
-
-wget https://github.com/Pearlulu/h5ai_dplayer/archive/master.zip && unzip master.zip
-
-cp -r  /home/wwwroot/h5ai_dplayer-master/* /home/wwwroot
-
-rm -rf master.zip h5ai_dplayer-master hls_aria2.sh subtovtt.sh hls_general.sh README.md
-```
-## DirectoryLister
-```
-wget https://www.moerats.com/usr/shell/DirectoryLister_ssl.sh && bash DirectoryLister_ssl.sh
-
-wget https://github.com/yenkj/DirectoryLister/archive/master.zip && unzip master.zip
-
-cp -r  /home/wwwroot/domain.com/DirectoryLister-master/* /home/wwwroot/domain.com
-
-rm -rf master.zip DirectoryLister-master
-```
-## SSR订阅地址
-https://quirky-bardeen-bde2df.netlify.com/
 ## GD百宝箱
 ```
 apt-get install curl git unzip zip python3-distutils python3 python3-pip
