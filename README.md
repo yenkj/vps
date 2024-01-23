@@ -33,109 +33,6 @@ docker run \
 -e REFRESH_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjZGM4ZjUxNGQxZWM0N2ZlOTk3MzA4NjkyY2M3YWJkMSIsImF1ZCI6IjczZTYxMTgzMWE3YzRkODdhYzQ5Yzg0ODFiZjlmMmM0IiwiZXhwIjoxNzEyNjYyMjMzLCJpYXQiOjE3MDQ4ODYyMzMsImp0aSI6IjY2MWJjNWU0ZTE2ZjQ5ZDFhOWQ1ZGUzNmIwM2E4ODQ5In0.OcDdmRvvTAPqSXyv4p4g5ZpdB1QbR9xDl36GjLjdxVzPmImCgXzcHidqg71YshNqHdowKVAcDusbCBGXfzIQVw \
 messense/aliyundrive-webdav
 ```
-## rclone
-```
-wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh
-
-rclone config
-```
-- 挂载
-```
-cd /d d:\rclone
-rclone authorize "onedrive"
-rclone authorize "drive" "eyJzY29wZSI6ImRyaXZlIn0"
-```
-mkdir /home/wwwroot/Cloud
-```
-rclone mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
-
-command="mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G"
-```
-- 以下是一整条命令，一起复制到SSH客户端运行
-```
-cat > /etc/systemd/system/rclone.service <<EOF
-[Unit]
-Description=Rclone
-After=network-online.target
-
-[Service]
-Type=simple
-ExecStart=$(command -v rclone) ${command}
-Restart=on-abort
-User=root
-
-[Install]
-WantedBy=default.target
-EOF
-``` 
-- 开始启动：`systemctl start rclone`
-- 设置开机自启：`systemctl enable rclone`
-
-- 卸载：`fusermount -qzu /home/wwwroot/Cloud`
-- 重启：`systemctl restart rclone`
-- 停止：`systemctl stop rclone`
-- 状态：`systemctl status rclone` 
-## openwrt
-`fusermount -qzu /mnt/sda3/docker/emby/share`
-```
-rclone mount banana:share /mnt/sda3/docker/emby/share \
---allow-non-empty \
---allow-other \
---vfs-cache-mode writes \
---dir-cache-time 25h \
---buffer-size 512M \
---vfs-read-chunk-size 128M \
---vfs-read-chunk-size-limit 1G &
-```
-
-## Emby恢复
-``` 
-zip -r emby.zip emby
-systemctl stop emby-server
-rm -rf /var/lib/emby
-rclone copy banana:share/emby.zip /var/lib -v
-unzip emby.zip
-chown -R emby:emby /var/lib/emby
-reboot
-```
-```
-    <link rel='stylesheet' id='theme-css'  href='style.css' type='text/css' media='all' />
-    <script src="common-utils.js"></script>
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="md5.min.js"></script>
-    <script src="main.js"></script>
- ```
-## Plex恢复
-```
-systemctl stop plexmediaserver.service
-rm -rf /var/lib/plexmediaserver
-rclone copy banana:share/plexmediaserver.zip /var/lib -v
-unzip plexmediaserver.zip
-chown -R plex:plex /var/lib/plexmediaserver
-reboot
-```
-## openwrt的Emby
-```
-docker run \
--d \
---net=host \
---name=emby2 \
--e PUID=1000 \
--e PGID=1000 \
--e TZ=Asia/Shanghai  \
--p 1900:1900 \
--p 7359:7359 \
--p 7359:7359/udp \
--p 8096:8096 \
--p 8920:8920 \
--v /mnt/sda3/docker/emby/config:/config \
--v /mnt/sda3/docker/emby/share:/mnt/share \
--v /dev/shm/cache:/dev/shm/cache \
---restart=always \
-linuxserver/emby:arm64v8-latest
-docker ps -a
-docker container update -m 800M --memory-swap=2048M 26caa2084196
-```
 ## 进入docker
 ```
 docker ps -a
@@ -249,28 +146,6 @@ server {
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
 docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="*******" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
 ```
-## dxz的Emby
-```
-docker run \
--d \
---net=host \
---name=emby00 \
--m 2G \
---device /dev/dri:/dev/dri \
--e UID=0 \
--e GID=0 \
--e GIDLIST=0 \
--e TZ=Asia/Shanghai  \
--p 1900:1900 \
--p 7359:7359 \
--p 7359:7359/udp \
--p 8096:8096 \
--p 8920:8920 \
--v /volume1/docker/emby00/emby/config:/config \
--v /volume1/DSM/emby/00:/00 \
--v /dev/shm:/dev/shm \
-emby/embyserver:latest
-```
 ## chatgpt
 ```
 https://chat.openai.com/api/auth/session
@@ -296,7 +171,130 @@ gngpp/ninja:latest run
 ```
 http://ip:port/har/upload
 ```
+## openwrt的Emby
+```
+docker run \
+-d \
+--net=host \
+--name=emby2 \
+-e PUID=1000 \
+-e PGID=1000 \
+-e TZ=Asia/Shanghai  \
+-p 1900:1900 \
+-p 7359:7359 \
+-p 7359:7359/udp \
+-p 8096:8096 \
+-p 8920:8920 \
+-v /mnt/sda3/docker/emby/config:/config \
+-v /mnt/sda3/docker/emby/share:/mnt/share \
+-v /dev/shm/cache:/dev/shm/cache \
+--restart=always \
+linuxserver/emby:arm64v8-latest
+docker ps -a
+docker container update -m 800M --memory-swap=2048M 26caa2084196
+```
+## rclone
+```
+wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh
 
+rclone config
+```
+- 挂载
+```
+cd /d d:\rclone
+rclone authorize "onedrive"
+rclone authorize "drive" "eyJzY29wZSI6ImRyaXZlIn0"
+```
+mkdir /home/wwwroot/Cloud
+```
+rclone mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
+
+command="mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G"
+```
+- 以下是一整条命令，一起复制到SSH客户端运行
+```
+cat > /etc/systemd/system/rclone.service <<EOF
+[Unit]
+Description=Rclone
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=$(command -v rclone) ${command}
+Restart=on-abort
+User=root
+
+[Install]
+WantedBy=default.target
+EOF
+``` 
+- 开始启动：`systemctl start rclone`
+- 设置开机自启：`systemctl enable rclone`
+
+- 卸载：`fusermount -qzu /home/wwwroot/Cloud`
+- 重启：`systemctl restart rclone`
+- 停止：`systemctl stop rclone`
+- 状态：`systemctl status rclone` 
+## openwrt
+`fusermount -qzu /mnt/sda3/docker/emby/share`
+```
+rclone mount banana:share /mnt/sda3/docker/emby/share \
+--allow-non-empty \
+--allow-other \
+--vfs-cache-mode writes \
+--dir-cache-time 25h \
+--buffer-size 512M \
+--vfs-read-chunk-size 128M \
+--vfs-read-chunk-size-limit 1G &
+```
+## Emby恢复
+``` 
+zip -r emby.zip emby
+systemctl stop emby-server
+rm -rf /var/lib/emby
+rclone copy banana:share/emby.zip /var/lib -v
+unzip emby.zip
+chown -R emby:emby /var/lib/emby
+reboot
+```
+```
+    <link rel='stylesheet' id='theme-css'  href='style.css' type='text/css' media='all' />
+    <script src="common-utils.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="md5.min.js"></script>
+    <script src="main.js"></script>
+ ```
+## Plex恢复
+```
+systemctl stop plexmediaserver.service
+rm -rf /var/lib/plexmediaserver
+rclone copy banana:share/plexmediaserver.zip /var/lib -v
+unzip plexmediaserver.zip
+chown -R plex:plex /var/lib/plexmediaserver
+reboot
+```
+## dxz的Emby
+```
+docker run \
+-d \
+--net=host \
+--name=emby00 \
+-m 2G \
+--device /dev/dri:/dev/dri \
+-e UID=0 \
+-e GID=0 \
+-e GIDLIST=0 \
+-e TZ=Asia/Shanghai  \
+-p 1900:1900 \
+-p 7359:7359 \
+-p 7359:7359/udp \
+-p 8096:8096 \
+-p 8920:8920 \
+-v /volume1/docker/emby00/emby/config:/config \
+-v /volume1/DSM/emby/00:/00 \
+-v /dev/shm:/dev/shm \
+emby/embyserver:latest
+```
 ## Aria2和ariang
 - Aria2
 ```
