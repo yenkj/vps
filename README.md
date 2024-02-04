@@ -143,7 +143,6 @@ https://chat.openai.com/api/auth/session
 docker run \
 --name chatgpt-web \
 -p 3002:3002 \
---disable-ipv6 \
 --restart=always \
 --env OPENAI_ACCESS_TOKEN= \
 --env API_REVERSE_PROXY=http://192.168.2.189:7999/backend-api/conversation \
