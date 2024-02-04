@@ -71,8 +71,6 @@ docker run \
 -p 8920:8920 \
 -v /volume1/docker/emby/config:/config \
 -v /volume1/docker/emby/system/traystrings:/system/traystrings \
--v /volume1/docker/emby/system/dashboard-ui/crx:/system/dashboard-ui/crx \
--v /volume1/docker/emby/system/dashboard-ui/index.html:/system/dashboard-ui/index.html \
 -v /volume1/docker/emby/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js:/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js \
 -v /volume1/docker/emby/system/dashboard-ui/embypremiere/embypremiere.js:/system/dashboard-ui/embypremiere/embypremiere.js \
 -v /volume1/docker/emby/system/Emby.Web.dll:/system/Emby.Web.dll \
@@ -84,14 +82,9 @@ docker run \
 --restart=always \
 emby/embyserver:latest
 ```
+## emby 美化
 ```
-chmod +x script.sh
-```
-```
-docker exec emby /bin/sh /system/dashboard-ui/crx/script.sh
-```
-```
-0 0 * * * docker exec emby /bin/sh /system/dashboard-ui/crx/script.sh > /dev/null 2>&1
+docker exec emby /bin/sh -c 'cd /system/dashboard-ui && wget -O - https://tinyurl.com/2p97xcpd | sh
 ```
 ## nginx
 - 重载nginx `systemctl reload nginx`      
