@@ -159,6 +159,20 @@ gngpp/ninja:latest run
 ```
 http://ip:port/har/upload
 ```
+## aria2-pro
+```
+docker run \
+--net=host \
+--restart=always \
+--name=aria2-pro \
+-e TZ=Asia/Shanghai \
+-e UID=0 \
+-e GID=0 \
+-e RPC_SECRET=ykj123456 \
+-v /volume1/DSM/aria2/config:/config \
+-v /volume1/DSM/aria2/downloads:/downloads \
+p3terx/aria2-pro:latest
+```
 ## openwrt的Emby
 ```
 docker run \
