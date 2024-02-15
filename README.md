@@ -86,6 +86,20 @@ emby/embyserver:latest
 ```
 docker exec emby /bin/sh -c 'cd /system/dashboard-ui && wget -O - https://raw.githubusercontent.com/yenkj/emby-crx/master/script.sh | sh'
 ```
+main.js第七行
+```
+this.itemQuery = { ImageTypes: "Backdrop", EnableImageTypes: "Logo,Backdrop", IncludeItemTypes: "Movie,Series", SortBy: "ProductionYear, PremiereDate, SortName", Recursive: true, ImageTypeLimit: 1, Limit: 10, Fields: "ProductionYear", SortOrder: "Descending", EnableUserData: false, EnableTotalRecordCount: false };
+```
+默认排序为ProductionYear, PremiereDate, SortName，
+
+改成DateCreated，让最新入库的媒体放在最前面，非常醒目。
+
+也可以修改轮播图数量上限，默认10张。
+
+因为我的媒体库名称写在了封面上，所以不需要媒体库标题显示，修改style.css第37行：
+```
+display: flex; /* 如果不需要媒体库标题显示, 请将flex改为none */
+```
 ## nginx
 - 重载nginx `systemctl reload nginx`      
 - nginx文件夹 `/etc/nginx/conf.d`
