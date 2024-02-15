@@ -84,7 +84,7 @@ emby/embyserver:latest
 ```
 ## emby 美化
 ```
-docker exec emby /bin/sh -c 'cd /system/dashboard-ui && wget -O - https://tinyurl.com/2p97xcpd | sh'
+docker exec emby /bin/sh -c 'cd /system/dashboard-ui && wget -O - https://raw.githubusercontent.com/yenkj/emby-crx/master/script.sh | sh'
 ```
 ## nginx
 - 重载nginx `systemctl reload nginx`      
