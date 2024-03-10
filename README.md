@@ -161,11 +161,12 @@ ykj363963169/chatgpt-web:latest
 ```
 ```
 docker run \
--p 7999:7999 \
---restart=always \
---name=ninja \
+-d --name go-chatgpt-api \
+-p 7999:8080 \
+-v /var/run/docker.sock:/var/run/docker.sock:ro \
 -e TZ=Asia/Shanghai \
-gngpp/ninja:latest run
+--restart unless-stopped \
+maxduke/go-chatgpt-api
 ```
 ```
 http://ip:port/har/upload
