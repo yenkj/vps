@@ -47,9 +47,8 @@ docker run \
 -e UID=0 \
 -e GID=0 \
 -e GIDLIST=0 \
--e TZ=Asia/Shanghai  \
--p 1900:1900 \
--p 7359:7359 \
+-e TZ=Asia/Shanghai \
+-p 1900:1900/udp \
 -p 7359:7359/udp \
 -p 8096:8096 \
 -p 8920:8920 \
@@ -78,16 +77,15 @@ docker exec -it emby /bin/sh
 ```
 docker run \
 -d \
---net=host \
+--network=bridge \
 --name=emby \
 -m 2G \
 --device /dev/dri:/dev/dri \
 -e UID=0 \
 -e GID=0 \
 -e GIDLIST=0 \
--e TZ=Asia/Shanghai  \
--p 1900:1900 \
--p 7359:7359 \
+-e TZ=Asia/Shanghai \
+-p 1900:1900/udp \
 -p 7359:7359/udp \
 -p 8096:8096 \
 -p 8920:8920 \
