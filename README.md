@@ -111,6 +111,9 @@ emby/embyserver:latest
 ```
 ## emby 破解
 ```
+docker exec emby /bin/sh -c 'wget -O - https://raw.githubusercontent.com/yenkj/vps/master/docker_crack_arm.sh | sh'
+```
+```
 docker exec emby /bin/sh -c 'wget -O - https://act.jiawei.xin:10086/tmp/emby/4.8.3.0/docker_crack_4.8.3.0.sh | sh'
 ```
 ## emby 美化
