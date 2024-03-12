@@ -38,6 +38,28 @@ messense/aliyundrive-webdav
 docker ps -a
 docker exec -it abe31ff51ddd /bin/bash
 ```
+## ARM的Emby
+```
+docker run \
+-d \
+--net=host \
+--name=emby \
+-e UID=0 \
+-e GID=0 \
+-e GIDLIST=0 \
+-e TZ=Asia/Shanghai  \
+-p 1900:1900 \
+-p 7359:7359 \
+-p 7359:7359/udp \
+-p 8096:8096 \
+-p 8920:8920 \
+-v /volume1/docker/emby/config:/config \
+-v /home/wwwroot/Cloud:/mnt/share \
+-v /home/wwwroot/sharep/share:/mnt/sharep \
+--restart=always \
+emby/embyserver_arm64v8:latest
+```
+
 ## DSM的Emby
 ```
 hypervisor.cpuid.v0
