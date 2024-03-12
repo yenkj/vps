@@ -84,7 +84,7 @@ emby/embyserver:latest
 ```
 ## emby 破解
 ```
-docker exec emby /bin/sh -c 'wget -O - https://act.jiawei.xin:10086/tmp/emby/4.8.0.80/docker_crack_4.8.0.80.sh | sh'
+docker exec emby /bin/sh -c 'wget -O - https://act.jiawei.xin:10086/tmp/emby/4.8.3.0/docker_crack_4.8.3.0.sh | sh'
 ```
 ## emby 美化
 ```
