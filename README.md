@@ -42,7 +42,7 @@ docker exec -it abe31ff51ddd /bin/bash
 ```
 docker run \
 -d \
---network=bridge \
+--network=host \
 --name=emby \
 -e UID=0 \
 -e GID=0 \
@@ -77,7 +77,7 @@ docker exec -it emby /bin/sh
 ```
 docker run \
 -d \
---network=bridge \
+--network=host \
 --name=emby \
 -m 2G \
 --device /dev/dri:/dev/dri \
@@ -85,7 +85,7 @@ docker run \
 -e GID=0 \
 -e GIDLIST=0 \
 -e TZ=Asia/Shanghai \
--p 1900:1900/udp \
+-p 1900:1900 \
 -p 7359:7359/udp \
 -p 8096:8096 \
 -p 8920:8920 \
