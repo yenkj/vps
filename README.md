@@ -42,7 +42,7 @@ docker exec -it abe31ff51ddd /bin/bash
 ```
 docker run \
 -d \
---network=host \
+--network=bridge \
 --name=emby \
 -e UID=0 \
 -e GID=0 \
