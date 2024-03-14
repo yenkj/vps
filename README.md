@@ -352,6 +352,22 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 - 创建下载目录 `mkdir -p /root/Download`  
 - 给予权限 `chmod +x /root/.aria2c/upload.sh`
 - 重启aria2 `/etc/init.d/aria2 restart`
+## xteve
+```
+docker run \
+-d \
+--name=xteve \
+--net=host \
+--log-opt \
+max-size=10m \
+--log-opt \
+max-file=3 \
+-e TZ="Asia/Shanghai" \
+-v /mnt/nfs/docker/xteve/:/root/.xteve:rw \
+-v /mnt/nfs/docker/xteve/_config/:/config:rw \
+-v /mnt/nfs/docker/xteve/_guide2go/:/guide2go:rw \
+alturismo/xteve_guide2go
+```
 
 ## VPS一键添加/删除Swap虚拟内存
 
