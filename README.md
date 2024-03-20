@@ -358,16 +358,14 @@ docker run \
 -d \
 --name=xteve \
 --net=host \
---log-opt \
-max-size=10m \
---log-opt \
-max-file=3 \
+--log-opt max-size=10m \
+--log-opt max-file=3 \
 -e TZ="Asia/Shanghai" \
--v /mnt/nfs/docker/xteve/:/root/.xteve:rw \
--v /mnt/nfs/docker/xteve/_config/:/config:rw \
--v /mnt/nfs/docker/xteve/_guide2go/:/guide2go:rw \
--v /tmp/xteve/:/tmp/xteve:rw \
--v /volume1/docker/TVH/:/TVH \
+-v /volume1/docker/xteve/:/root/.xteve:rw \
+-v /volume1/docker/xteve/_config/:/config:rw \
+-v /volume1/docker/xteve/_guide2go/:/guide2go:rw \
+-v /dev/shm/cache/:/tmp/xteve:rw \
+-v /volume1/docker/xteve/m3u/:/mnt \
 alturismo/xteve_guide2go
 ```
 
