@@ -366,6 +366,8 @@ max-file=3 \
 -v /mnt/nfs/docker/xteve/:/root/.xteve:rw \
 -v /mnt/nfs/docker/xteve/_config/:/config:rw \
 -v /mnt/nfs/docker/xteve/_guide2go/:/guide2go:rw \
+-v /tmp/xteve/:/tmp/xteve:rw \
+-v /volume1/docker/TVH/:/TVH \
 alturismo/xteve_guide2go
 ```
 
