@@ -160,6 +160,25 @@ server {
       }
 }
 ```
+```
+server {
+    listen 80;
+    server_name localhost;   
+    location / {
+    proxy_redirect off;  
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Protocol $scheme;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_pass http://192.168.2.189:8096/;  
+     if ($args ~ (^|.*)&MaxStreamingBitrate=\d*(.*)) {
+            set $args $1&MaxStreamingBitrate=1600000000$2;
+        }
+    }
+}
+```
 ## pikpak-webdav
 ```
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
