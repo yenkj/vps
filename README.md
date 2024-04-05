@@ -287,7 +287,8 @@ EOF
 - 卸载：`fusermount -qzu /home/wwwroot/Cloud`
 - 重启：`systemctl restart rclone`
 - 停止：`systemctl stop rclone`
-- 状态：`systemctl status rclone` 
+- 状态：`systemctl status rclone`
+- 位置：`/root/.config/rclone/rclone.conf`
 ## openwrt
 `fusermount -qzu /mnt/sda3/docker/emby/share`
 ```
