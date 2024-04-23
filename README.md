@@ -37,6 +37,7 @@ messense/aliyundrive-webdav
 ```
 docker ps -a
 docker exec -it abe31ff51ddd /bin/bash
+docker exec -it emby /bin/sh
 ```
 ## ARM的Emby
 ```
@@ -70,9 +71,6 @@ vim /etc/crontab
 @reboot root rclone mount pikpak:share /volume1/DSM/emby/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
 @reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
 @reboot root sleep 60;docker start emby
-```
-```
-docker exec -it emby /bin/sh
 ```
 ```
 docker run \
