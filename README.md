@@ -51,7 +51,7 @@ docker run \
 -e TZ=Asia/Shanghai \
 -p 1900:1900 \
 -p 7359:7359/udp \
--p 8096:8096 \
+-p 8099:8096 \
 -p 8920:8920 \
 -v /volume1/docker/emby/config:/config \
 -v /home/wwwroot/Cloud:/mnt/share \
