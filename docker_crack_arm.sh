@@ -2,7 +2,7 @@
 echo "docker一键**脚本，适4.8.6.0版本"
 echo "-------------------web端**-------------------"
 rm -f /system/Emby.Ffmpeg.dll
-wget -P /system/ http://w.199301.xyz:9867/share/emby/arm/f/Emby.Ffmpeg.dll.dll
+wget -P /system/ http://w.199301.xyz:9867/share/emby/arm/f/Emby.Ffmpeg.dll
 rm -f /system/Emby.Ffmpeg.Lib.dll
 wget -P /system/ http://w.199301.xyz:9867/share/emby/arm/f/Emby.Ffmpeg.Lib.dll
 rm -f /system/Emby.Server.MediaEncoding.dll
