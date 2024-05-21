@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "docker一键**脚本，适4.8.6.0版本"
+echo "docker一键**脚本，适4.8.7.0版本"
 echo "-------------------web端**-------------------"
 rm -f /system/Emby.Web.dll
 wget -P /system/ http://w.199301.xyz:9867/share/emby/arm/Emby.Web.dll
