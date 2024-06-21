@@ -39,6 +39,10 @@ docker ps -a
 docker exec -it abe31ff51ddd /bin/bash
 docker exec -it emby /bin/sh
 ```
+## pixman
+```
+docker run -d --name=4gtv -p 6000:5000 --restart=always pixman/pixman
+```
 ## ARM的Emby
 ```
 docker run \
