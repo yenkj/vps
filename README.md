@@ -41,7 +41,7 @@ docker exec -it emby /bin/sh
 ```
 ## pixman
 ```
-docker run -d --name=4gtv -p 6000:5000 --restart=always pixman/pixman
+docker run -d --name=4gtv -p 6000:5000 -v /volume1/docker/m3u:/app/app/data/m3u --restart=always pixman/pixman
 ```
 ## ARM的Emby
 ```
