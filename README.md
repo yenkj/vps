@@ -137,7 +137,7 @@ display: flex; /* 如果不需要媒体库标题显示, 请将flex改为none */
 - 证书位置 `/root/.acme.sh/`
 - 反代实现第三方播放器
 ```
-docker run --name=nginx-m -p 8099:80 -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
+docker run --name=nginx-m -p 8099:80 --restart=always -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
 ```
 ```
 nohup python3 ExternalUrl.py  > ExternalUrl.log 2>&1 &
