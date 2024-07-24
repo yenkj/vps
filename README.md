@@ -267,7 +267,7 @@ docker container update -m 800M --memory-swap=2048M 26caa2084196
 ```
 ## rclone
 ```
-wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh
+sudo -v ; curl https://rclone.org/install.sh | sudo bash
 
 rclone config
 ```
