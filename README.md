@@ -231,6 +231,18 @@ docker run \
 -v /volume1/DSM/aria2/downloads:/downloads \
 p3terx/aria2-pro:latest
 ```
+## homeassistant
+```
+docker run -d --name hassio_supervisor --privileged \
+--restart always \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /var/run/dbus:/var/run/dbus \
+-v /volume1/docker/hassio:/data \
+-e SUPERVISOR_SHARE=/volume1/docker/hassio \
+-e SUPERVISOR_NAME=hassio_supervisor \
+-e HOMEASSISTANT_REPOSITORY=homeassistant/qemux86-64-homeassistant \
+ghcr.io/home-assistant/amd64-hassio-supervisor
+```
 ## openwrt的Emby
 ```
 docker run \
