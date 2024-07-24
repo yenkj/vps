@@ -403,7 +403,7 @@ docker run \
 -v /volume1/docker/xteve/:/root/.xteve:rw \
 -v /volume1/docker/xteve/_config/:/config:rw \
 -v /volume1/docker/xteve/_guide2go/:/guide2go:rw \
--v /dev/shm/cache/:/tmp/xteve:rw \
+-v /dev/shm/:/tmp/xteve:rw \
 -v /volume1/docker/xteve/m3u/:/mnt \
 alturismo/xteve_guide2go
 ```
