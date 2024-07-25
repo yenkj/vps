@@ -13,14 +13,11 @@ curl https://get.acme.sh | sh
 ## 安装X-ui面板
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
-
 ```
 ## 阿里云盘挂载
 ```
 rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
-
 rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
-
 ```
 ## aliyundrive-webdav
 ```
@@ -63,7 +60,6 @@ docker run \
 --restart=always \
 emby/embyserver_arm64v8:latest
 ```
-
 ## DSM的Emby
 ```
 hypervisor.cpuid.v0
@@ -122,11 +118,8 @@ main.js第七行
 this.itemQuery = { ImageTypes: "Backdrop", EnableImageTypes: "Logo,Backdrop", IncludeItemTypes: "Movie,Series", SortBy: "ProductionYear, PremiereDate, SortName", Recursive: true, ImageTypeLimit: 1, Limit: 10, Fields: "ProductionYear", SortOrder: "Descending", EnableUserData: false, EnableTotalRecordCount: false };
 ```
 默认排序为ProductionYear, PremiereDate, SortName，
-
 改成DateCreated，让最新入库的媒体放在最前面，非常醒目。
-
 也可以修改轮播图数量上限，默认10张。
-
 因为我的媒体库名称写在了封面上，所以不需要媒体库标题显示，修改style.css第37行：
 ```
 display: flex; /* 如果不需要媒体库标题显示, 请将flex改为none */
@@ -189,7 +182,6 @@ server {
 ## pikpak-webdav
 ```
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
-
 docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="*******" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
 ```
 ## chatgpt
@@ -267,8 +259,8 @@ docker container update -m 800M --memory-swap=2048M 26caa2084196
 ```
 ## rclone
 ```
+wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
-
 rclone config
 ```
 - 挂载
@@ -280,13 +272,7 @@ rclone authorize "drive" "eyJzY29wZSI6ImRyaXZlIn0"
 mkdir /home/wwwroot/Cloud
 ```
 rclone mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
-
 command="mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G"
-```
-- windows 挂载
-```
-https://github.com/kapitainsky/RcloneBrowser/releases
---cache-dir C:\rclone\Cache --vfs-cache-mode full --buffer-size 64M --low-level-retries 200 --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G 
 ```
 - 以下是一整条命令，一起复制到SSH客户端运行
 ```
@@ -294,20 +280,17 @@ cat > /etc/systemd/system/rclone.service <<EOF
 [Unit]
 Description=Rclone
 After=network-online.target
-
 [Service]
 Type=simple
 ExecStart=$(command -v rclone) ${command}
 Restart=on-abort
 User=root
-
 [Install]
 WantedBy=default.target
 EOF
 ``` 
 - 开始启动：`systemctl start rclone`
 - 设置开机自启：`systemctl enable rclone`
-
 - 卸载：`fusermount -qzu /home/wwwroot/Cloud`
 - 重启：`systemctl restart rclone`
 - 停止：`systemctl stop rclone`
@@ -379,7 +362,6 @@ emby/embyserver:latest
 wget -N git.io/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 ```
 - aria2文件夹 
-
 `/root/.aria2c`   
 - 配置文件
 ```
@@ -412,52 +394,36 @@ docker run \
 -v /volume1/docker/xteve/m3u/:/mnt \
 alturismo/xteve_guide2go
 ```
-
 ## VPS一键添加/删除Swap虚拟内存
-
 ``wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh``
 ## H5ai
 ```
 apt-get install git -y
-
 git clone https://github.com/wulabing/h5ai_onekey_install-lnp-.git h5ai
-
 cd h5ai
-
 Debian 8运行命令
-
 bash h5ai.sh
  
 Debian 9运行命令
-
 sed -i '53,54d' h5ai.sh && bash h5ai.sh
 ```
-
 ## GD百宝箱
 ```
 apt-get install curl git unzip zip python3-distutils python3 python3-pip
-
 apt-get install screen git && curl https://rclone.org/install.sh | sudo bash
-
 python3 gen_sa_accounts.py --quick-setup -1
-
 cp -r /root/AutoRclone/accounts/* /root/gd-utils/sa
-
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gd-utils/master/gdutilsinstall.sh)"
 ```
-
 请输入机器人token并回车
     
     Your Bot Token =>:1352493505:AAFzll21Y6WTheXV6eMTfe1B-roQKWOwbjc
-
 请输入你的域名(在cloudflare上解析到你机器人所在VPS的域名，格式：bot.abc.com)并回车
    
    Your Domain Name =>:tg.199301.xyz
-
 请输入使用机器人的telegram账号ID(获取ID机器人@userinfobot)并回车
     
     Your Telegram ID =>:445209991
-
 请输入转存默认目的地团队盘ID(不指定转存目的地默认改地址，脚本强制要求输入团队盘ID)并回车
    
    Your Google Team Drive ID =>:0AO4-CX_XxBu3Uk9PVA
@@ -467,17 +433,13 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gd-utils/master
 ```
 bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh) -M -4
 ```
-
 ```
 [Script]
 EmbyPremiere = type=http-response,script-path=https://gitlab.com/iptv-org/embypublic/-/raw/master/Script/EmbyPremiere.js,pattern=^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice,max-size=131072,requires-body=true,timeout=10,enable=true
-
 [MITM]
 hostname = mb3admin.com
 ```
-
 ```
-
 [URL Rewrite]
 (?<=_region=)CN(?=&) JP 307
 (?<=&mcc_mnc=)4 2 307
@@ -486,9 +448,4 @@ hostname = mb3admin.com
  
 [MITM]
 hostname = *.tiktokv.com,*.byteoversea.com,*.tik-tokapi.com
-
 ```
-
-
-
-
