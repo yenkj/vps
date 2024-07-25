@@ -14,11 +14,6 @@ curl https://get.acme.sh | sh
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
-## 阿里云盘挂载
-```
-rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
-rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
-```
 ## aliyundrive-webdav
 ```
 docker run \
@@ -30,6 +25,11 @@ docker run \
 -e REFRESH_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjZGM4ZjUxNGQxZWM0N2ZlOTk3MzA4NjkyY2M3YWJkMSIsImF1ZCI6IjczZTYxMTgzMWE3YzRkODdhYzQ5Yzg0ODFiZjlmMmM0IiwiZXhwIjoxNzEyNjYyMjMzLCJpYXQiOjE3MDQ4ODYyMzMsImp0aSI6IjY2MWJjNWU0ZTE2ZjQ5ZDFhOWQ1ZGUzNmIwM2E4ODQ5In0.OcDdmRvvTAPqSXyv4p4g5ZpdB1QbR9xDl36GjLjdxVzPmImCgXzcHidqg71YshNqHdowKVAcDusbCBGXfzIQVw \
 messense/aliyundrive-webdav
 ```
+- 阿里云盘挂载
+```
+rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
+rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
+```
 ## 进入docker
 ```
 docker ps -a
@@ -39,26 +39,6 @@ docker exec -it emby /bin/sh
 ## pixman
 ```
 docker run -d --name=4gtv -p 6000:5000 -v /volume1/docker/m3u:/app/app/data/m3u --restart=always pixman/pixman
-```
-## ARM的Emby
-```
-docker run \
--d \
---network=bridge \
---name=emby \
--e UID=0 \
--e GID=0 \
--e GIDLIST=0 \
--e TZ=Asia/Shanghai \
--p 1900:1900 \
--p 7359:7359/udp \
--p 8099:8096 \
--p 8920:8920 \
--v /volume1/docker/emby/config:/config \
--v /home/wwwroot/Cloud:/mnt/share \
--v /home/wwwroot/sharep/share:/mnt/sharep \
---restart=always \
-emby/embyserver_arm64v8:latest
 ```
 ## DSM的Emby
 ```
@@ -100,7 +80,7 @@ docker run \
 --restart=always \
 emby/embyserver:latest
 ```
-## emby 破解
+- emby 破解
 ```
 docker exec emby /bin/sh -c 'wget -O - https://raw.githubusercontent.com/yenkj/vps/master/docker_crack_arm.sh | sh'
 docker restart emby
@@ -109,7 +89,7 @@ docker restart emby
 docker exec emby /bin/sh -c 'wget -O - https://act.jiawei.xin:10086/tmp/emby/4.8.3.0/docker_crack_4.8.3.0.sh | sh'
 docker restart emby
 ```
-## emby 美化
+- emby 美化
 ```
 docker exec emby /bin/sh -c 'cd /system/dashboard-ui && wget -O - https://raw.githubusercontent.com/yenkj/emby-crx/master/script.sh | sh'
 ```
@@ -184,31 +164,6 @@ server {
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
 docker run -d --name=pikpak-webdav --restart=unless-stopped --network=host -v /etc/localtime:/etc/localtime -e TZ="Asia/Shanghai" -e JAVA_OPTS="-Xmx512m" -e SERVER_PORT="9867" -e PIKPAK_USERNAME="ykj363963169@gmail.com" -e PIKPAK_PASSWORD="*******" -e PIKPAK_PROXY_HOST="" -e PIKPAK_PROXY_PORT="" -e PIKPAK_PROXY_PROXY-TYPE="HTTP"  vgearen/pikpak-webdav
 ```
-## chatgpt
-```
-https://chat.openai.com/api/auth/session
-```
-```
-docker run \
---name chatgpt-web \
--p 3002:3002 \
---restart=always \
---env OPENAI_ACCESS_TOKEN= \
---env API_REVERSE_PROXY=http://w.199301.xyz:7999/chatgpt/backend-api/conversation \
-ykj363963169/chatgpt-web:latest
-```
-```
-docker run \
--d --name go-chatgpt-api \
--p 7999:8080 \
--v /var/run/docker.sock:/var/run/docker.sock:ro \
--e TZ=Asia/Shanghai \
---restart unless-stopped \
-maxduke/go-chatgpt-api
-```
-```
-http://ip:port/har/upload
-```
 ## aria2-pro
 ```
 docker run \
@@ -235,28 +190,6 @@ docker run -d --name hassio_supervisor --privileged \
 -e HOMEASSISTANT_REPOSITORY=homeassistant/qemux86-64-homeassistant \
 ghcr.io/home-assistant/amd64-hassio-supervisor
 ```
-## openwrt的Emby
-```
-docker run \
--d \
---net=host \
---name=emby2 \
--e PUID=1000 \
--e PGID=1000 \
--e TZ=Asia/Shanghai  \
--p 1900:1900 \
--p 7359:7359 \
--p 7359:7359/udp \
--p 8096:8096 \
--p 8920:8920 \
--v /mnt/sda3/docker/emby/config:/config \
--v /mnt/sda3/docker/emby/share:/mnt/share \
--v /dev/shm/cache:/dev/shm/cache \
---restart=always \
-linuxserver/emby:arm64v8-latest
-docker ps -a
-docker container update -m 800M --memory-swap=2048M 26caa2084196
-```
 ## rclone
 ```
 wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh
@@ -269,7 +202,6 @@ cd /d d:\rclone
 rclone authorize "onedrive"
 rclone authorize "drive" "eyJzY29wZSI6ImRyaXZlIn0"
 ```
-mkdir /home/wwwroot/Cloud
 ```
 rclone mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
 command="mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G"
@@ -292,7 +224,7 @@ EOF
 - windows挂载
 ```
 https://github.com/kapitainsky/RcloneBrowser/releases
---cache-dir C:\rclone\Cache --vfs-cache-mode full --buffer-size 64M --low-level-retries 200 --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G
+--cache-dir C:\rclone\Cache --vfs-cache-mode writes --buffer-size 64M --low-level-retries 200 --dir-cache-time 12h --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
 ```
 - 开始启动：`systemctl start rclone`
 - 设置开机自启：`systemctl enable rclone`
@@ -301,6 +233,48 @@ https://github.com/kapitainsky/RcloneBrowser/releases
 - 停止：`systemctl stop rclone`
 - 状态：`systemctl status rclone`
 - 位置：`/root/.config/rclone/rclone.conf`
+## openwrt的Emby
+```
+docker run \
+-d \
+--net=host \
+--name=emby2 \
+-e PUID=1000 \
+-e PGID=1000 \
+-e TZ=Asia/Shanghai  \
+-p 1900:1900 \
+-p 7359:7359 \
+-p 7359:7359/udp \
+-p 8096:8096 \
+-p 8920:8920 \
+-v /mnt/sda3/docker/emby/config:/config \
+-v /mnt/sda3/docker/emby/share:/mnt/share \
+-v /dev/shm/cache:/dev/shm/cache \
+--restart=always \
+linuxserver/emby:arm64v8-latest
+docker ps -a
+docker container update -m 800M --memory-swap=2048M 26caa2084196
+```
+## ARM的Emby
+```
+docker run \
+-d \
+--network=bridge \
+--name=emby \
+-e UID=0 \
+-e GID=0 \
+-e GIDLIST=0 \
+-e TZ=Asia/Shanghai \
+-p 1900:1900 \
+-p 7359:7359/udp \
+-p 8099:8096 \
+-p 8920:8920 \
+-v /volume1/docker/emby/config:/config \
+-v /home/wwwroot/Cloud:/mnt/share \
+-v /home/wwwroot/sharep/share:/mnt/sharep \
+--restart=always \
+emby/embyserver_arm64v8:latest
+```
 ## openwrt
 `fusermount -qzu /mnt/sda3/docker/emby/share`
 ```
@@ -312,6 +286,31 @@ rclone mount banana:share /mnt/sda3/docker/emby/share \
 --buffer-size 512M \
 --vfs-read-chunk-size 128M \
 --vfs-read-chunk-size-limit 1G &
+```
+## chatgpt
+```
+https://chat.openai.com/api/auth/session
+```
+```
+docker run \
+--name chatgpt-web \
+-p 3002:3002 \
+--restart=always \
+--env OPENAI_ACCESS_TOKEN= \
+--env API_REVERSE_PROXY=http://w.199301.xyz:7999/chatgpt/backend-api/conversation \
+ykj363963169/chatgpt-web:latest
+```
+```
+docker run \
+-d --name go-chatgpt-api \
+-p 7999:8080 \
+-v /var/run/docker.sock:/var/run/docker.sock:ro \
+-e TZ=Asia/Shanghai \
+--restart unless-stopped \
+maxduke/go-chatgpt-api
+```
+```
+http://ip:port/har/upload
 ```
 ## Emby恢复
 ``` 
@@ -412,28 +411,6 @@ bash h5ai.sh
 Debian 9运行命令
 sed -i '53,54d' h5ai.sh && bash h5ai.sh
 ```
-## GD百宝箱
-```
-apt-get install curl git unzip zip python3-distutils python3 python3-pip
-apt-get install screen git && curl https://rclone.org/install.sh | sudo bash
-python3 gen_sa_accounts.py --quick-setup -1
-cp -r /root/AutoRclone/accounts/* /root/gd-utils/sa
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gd-utils/master/gdutilsinstall.sh)"
-```
-请输入机器人token并回车
-    
-    Your Bot Token =>:1352493505:AAFzll21Y6WTheXV6eMTfe1B-roQKWOwbjc
-请输入你的域名(在cloudflare上解析到你机器人所在VPS的域名，格式：bot.abc.com)并回车
-   
-   Your Domain Name =>:tg.199301.xyz
-请输入使用机器人的telegram账号ID(获取ID机器人@userinfobot)并回车
-    
-    Your Telegram ID =>:445209991
-请输入转存默认目的地团队盘ID(不指定转存目的地默认改地址，脚本强制要求输入团队盘ID)并回车
-   
-   Your Google Team Drive ID =>:0AO4-CX_XxBu3Uk9PVA
-   
-   
 ## 流媒体解锁检测
 ```
 bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh) -M -4
