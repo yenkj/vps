@@ -288,7 +288,12 @@ User=root
 [Install]
 WantedBy=default.target
 EOF
-``` 
+```
+- windows挂载
+```
+https://github.com/kapitainsky/RcloneBrowser/releases
+--cache-dir C:\rclone\Cache --vfs-cache-mode full --buffer-size 64M --low-level-retries 200 --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G
+```
 - 开始启动：`systemctl start rclone`
 - 设置开机自启：`systemctl enable rclone`
 - 卸载：`fusermount -qzu /home/wwwroot/Cloud`
