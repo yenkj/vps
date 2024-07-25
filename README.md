@@ -262,6 +262,7 @@ docker container update -m 800M --memory-swap=2048M 26caa2084196
 wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
 rclone config
+RcloneBrowser https://github.com/kapitainsky/RcloneBrowser/releases
 ```
 - 挂载
 ```
@@ -273,6 +274,7 @@ mkdir /home/wwwroot/Cloud
 ```
 rclone mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
 command="mount banana:share /home/wwwroot/Cloud  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G"
+--cache-dir C:\rclone\Cache --vfs-cache-mode full --buffer-size 64M --low-level-retries 200 --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G 
 ```
 - 以下是一整条命令，一起复制到SSH客户端运行
 ```
