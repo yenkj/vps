@@ -159,6 +159,23 @@ server {
     }
 }
 ```
+## filebrowser
+```
+docker run -d \
+-v /home/wwwroot/Cloud:/srv/share0 \
+-v /home/wwwroot/p:/srv/p \
+-v /home/wwwroot/ali:/srv/ali \
+-v /home/qb/downloads:/srv/qb \
+-v /home/wwwroot/filebrowser/database/filebrowser.db:/database/filebrowser.db \
+-v /home/wwwroot/filebrowser/config/settings.json:/config/settings.json \
+-e PUID=0 \
+-e PGID=0 \
+-p 7788:80 \
+--name=share \
+--privileged=true \
+--restart always \
+filebrowser/filebrowser:latest
+```
 ## pikpak-webdav
 ```
 docker run --name pikpak-webdav --restart=unless-stopped -p 9867:9867 -e PIKPAK_USER='ykj363963169@gmail.com' -e PIKPAK_PASSWORD='*******' ykxvk8yl5l/pikpak-webdav:latest
