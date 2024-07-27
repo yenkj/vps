@@ -27,8 +27,11 @@ messense/aliyundrive-webdav
 ```
 - 阿里云盘挂载
 ```
-rclone mount aliyun:share /volume1/DSM/emby/share1  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
-rclone mount aliyun:share /root/share  --allow-non-empty --allow-other --dir-cache-time 12h  >/dev/null 2>&1 &
+[aliyun]
+type = webdav
+url = http://0.0.0.0:8080
+vendor = other
+rclone mount aliyun:share /volume1/DSM/emby/share1 --cache-dir /tmp --allow-other --vfs-cache-mode writes --allow-non-empty
 ```
 ## 进入docker
 ```
