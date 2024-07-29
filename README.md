@@ -307,6 +307,12 @@ rclone mount banana:share /mnt/sda3/docker/emby/share \
 --vfs-read-chunk-size 128M \
 --vfs-read-chunk-size-limit 1G &
 ```
+- CF优选IP
+```
+docker run -d -v /cf/config:/app/config --name CloudflareSpeedTestDDNS lee1080/cfstddns:latest
+编辑config
+docker restart CloudflareSpeedTestDDNS
+```
 ## chatgpt
 ```
 https://chat.openai.com/api/auth/session
