@@ -295,6 +295,27 @@ docker run \
 --restart=always \
 emby/embyserver_arm64v8:latest
 ```
+## BUYVM的Emby
+```
+  emby:
+    image: emby/embyserver
+    container_name: emby
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - GIDLIST=0
+    ports:
+      - 1900:1900
+      - 7359:7359/udp
+      - 8099:8096
+      - 8920:8920
+    volumes:
+      - /home/wwwroot/docker/emby/config:/config
+      - /home/wwwroot/Cloud:/mnt/share
+      - /home/wwwroot/p:/mnt/sharep
+    restart: always
+```
 ## openwrt
 `fusermount -qzu /mnt/sda3/docker/emby/share`
 ```
