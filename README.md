@@ -295,7 +295,8 @@ docker run \
 --restart=always \
 emby/embyserver_arm64v8:latest
 ```
-## BUYVM的Emby
+## BUYVM
+- Emby
 ```
   emby:
     image: emby/embyserver
@@ -316,8 +317,8 @@ emby/embyserver_arm64v8:latest
       - /home/wwwroot/p:/mnt/sharep
     restart: always
 ```
-```
 - mkvtoolnix
+```
   mkvtoolnix:
     image: jlesage/mkvtoolnix
     container_name: mkvtoolnix
@@ -331,6 +332,9 @@ emby/embyserver_arm64v8:latest
       - /home/wwwroot/docker/mkvtoolnix:/config:rw
       - /home/qb/downloads:/storage:rw
     restart: always
+```
+```
+chmod -R 777 /storage
 ```
 ## openwrt
 `fusermount -qzu /mnt/sda3/docker/emby/share`
