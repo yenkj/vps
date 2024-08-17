@@ -1,0 +1,49 @@
+rules:
+  - DOMAIN-SUFFIX,livednow.com,4gtv
+  - DOMAIN-SUFFIX,orz-7.com,4gtv
+  - DOMAIN-SUFFIX,4gtv.tv,4gtv
+  - DOMAIN-SUFFIX,hinet.net,4gtv
+  - DOMAIN-SUFFIX,ofiii.com,4gtv
+  - DOMAIN-SUFFIX,youtube.com,4gtv
+  - DOMAIN-SUFFIX,mytvsuper.com,4gtv
+  - DOMAIN-SUFFIX,thetvapp.to,4gtv
+  - DOMAIN-SUFFIX,mypikpak.com,4gtv
+  - DOMAIN-SUFFIX,mjh.nz,US
+  - DOMAIN-SUFFIX,stream-link.org,US
+  - DOMAIN-SUFFIX,stream-link.online,US
+  - DOMAIN,tubitv.com,US
+  - DOMAIN,tubi.tv,US
+  - DOMAIN,tubi.io,US
+  - DOMAIN,tubi.video,US
+  - DOMAIN-SUFFIX,tubitv.com,US
+  - DOMAIN-SUFFIX,tubi.tv,US
+  - DOMAIN-SUFFIX,tubi.io,US
+  - DOMAIN-SUFFIX,tubi.video,US
+  - DOMAIN,static-homepage-en.pluto.tv,US
+  - DOMAIN,siloh.pluto.tv,US
+  - DOMAIN,boot.pluto.tv,US
+  - DOMAIN,s.pluto.tv,US
+  - DOMAIN,service-channels.clusters.pluto.tv,US
+  - DOMAIN,api.pluto.tv,US
+  - DOMAIN,mages.pluto.tv,US
+  - DOMAIN,service-stitcher.clusters.pluto.tv,US
+  - DOMAIN,plutotv.zendesk.com,US
+  - DOMAIN,corporate.pluto.tv,US
+  - DOMAIN-SUFFIX,pluto.tv,US
+  - DOMAIN-KEYWORD,dl-a10b-,🎯 全球直连
+  - DOMAIN-SUFFIX,dnsany.com,🎯 全球直连
+  - DOMAIN-SUFFIX,cmvideo.cn,🎯 全球直连
+  - DOMAIN-SUFFIX,chinamobile.com,🎯 全球直连
+  - DOMAIN-SUFFIX,mobaibox.com,🎯 全球直连
+  - DOMAIN-SUFFIX,gitv.tv,🎯 全球直连
+  - DOMAIN-SUFFIX,cctv.cn,🎯 全球直连
+  - DOMAIN-SUFFIX,yangshipin.cn,🎯 全球直连
+  - DOMAIN-SUFFIX,gcable.cn,🎯 全球直连
+  - IP-CIDR,183.206.0.0/15,🎯 全球直连,no-resolve
+  - IP-CIDR,223.5.5.5/32,🎯 全球直连,no-resolve
+  - IP-CIDR,27.36.0.0/14,🎯 全球直连,no-resolve
+  - IP-CIDR,183.238.66.0/24,🎯 全球直连,no-resolve
+  - DOMAIN-KEYWORD,openai,🤖 OpenAi
+  - DOMAIN-KEYWORD,chatgpt,🤖 OpenAi
+  - DOMAIN-SUFFIX,chatgpt.com,🤖 OpenAi
+  - DOMAIN-SUFFIX,bing.com,🤖 OpenAi
