@@ -15,7 +15,6 @@ curl https://get.acme.sh | sh
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
 ## serv00
-```
 - 清理
 ```
 pkill -kill -u ${username}
@@ -23,7 +22,6 @@ chmod -R 755 ~/*
 chmod -R 755 ~/.* 
 rm -rf ~/.* 
 rm -rf ~/*
-```
 ```
 ## aliyundrive-webdav
 ```
