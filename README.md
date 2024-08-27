@@ -41,7 +41,7 @@ docker exec -it emby /bin/sh
 ```
 ## pixman
 ```
-docker run -d --name=4gtv -p 6000:5000 -v /volume1/docker/m3u:/app/app/data/m3u -e http_proxy=http://192.168.2.2:7890 -e https_proxy=http://192.168.2.2:7890 --restart=always pixman/pixman
+docker run -d --name=4gtv -p 6000:5000 -v /volume1/docker/m3u:/app/app/data/m3u --restart=always pixman/pixman
 ```
 ## DSM的Emby
 ```
@@ -463,6 +463,7 @@ docker run \
 -v /volume1/docker/xteve/_guide2go/:/guide2go:rw \
 -v /dev/shm/:/tmp/xteve:rw \
 -v /volume1/docker/m3u/:/mnt \
+--restart=always
 alturismo/xteve_guide2go
 ```
 ## VPS一键添加/删除Swap虚拟内存
