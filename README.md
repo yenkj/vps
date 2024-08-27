@@ -463,7 +463,7 @@ docker run \
 -v /volume1/docker/xteve/_guide2go/:/guide2go:rw \
 -v /volume1/docker/xteve/tmp/:/tmp/xteve:rw \
 -v /volume1/docker/m3u/:/mnt \
---restart=always
+--restart=always \
 alturismo/xteve_guide2go
 ```
 ## VPS一键添加/删除Swap虚拟内存
