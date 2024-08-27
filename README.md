@@ -461,7 +461,7 @@ docker run \
 -v /volume1/docker/xteve/:/root/.xteve:rw \
 -v /volume1/docker/xteve/_config/:/config:rw \
 -v /volume1/docker/xteve/_guide2go/:/guide2go:rw \
--v /dev/shm/:/tmp/xteve:rw \
+-v /volume1/docker/xteve/tmp/:/tmp/xteve:rw \
 -v /volume1/docker/m3u/:/mnt \
 --restart=always
 alturismo/xteve_guide2go
