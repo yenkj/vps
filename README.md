@@ -52,6 +52,10 @@ docker exec -it emby /bin/sh
 ```
 docker run -d --name=4gtv -p 6000:5000 -v /volume1/docker/m3u:/app/app/data/m3u --restart=always pixman/pixman
 ```
+## php-env
+```
+docker run -d --restart unless-stopped --privileged=true -p 5679:80 -v  /volume1/docker/m3u:/var/www/html/ --name php-env youshandefeiyang/php-env
+```
 ## DSM的Emby
 ```
 hypervisor.cpuid.v0
