@@ -65,6 +65,7 @@ sudo ln -s /bin/fusermount /bin/fusermount3
 vim /etc/crontab
 @reboot root rclone mount banana:share /volume1/DSM/emby/share --copy-links --allow-other --allow-non-empty --umask 000 --daemon
 @reboot root rclone mount pikpak:share /volume1/DSM/emby/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
+rclone mount my:share /volume1/DSM/emby/share --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
 @reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
 @reboot root sleep 60;docker start emby
 ```
