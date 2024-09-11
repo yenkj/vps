@@ -56,6 +56,20 @@ docker run -d --name=4gtv -p 6000:5000 -v /volume1/docker/m3u:/app/app/data/m3u 
 ```
 docker run -d --restart unless-stopped --privileged=true -p 5679:80 -v  /volume1/docker/m3u:/var/www/html/ --name php-env youshandefeiyang/php-env
 ```
+## proxy
+```
+docker run \
+-d \
+-p 8880:4994 \
+-m 200m \
+--name=proxy  \
+-e CUSTOM_DOMAIN="http://***:6000" \
+-e VPS_HOST="http://***:8880" \
+-e SECURITY_TOKEN="4gtv" \
+-e INCLUDE_MYTVSUPER="free" \
+--restart always \
+ppyycc/streamshield-proxy:latest
+```
 ## DSM的Emby
 ```
 hypervisor.cpuid.v0
