@@ -70,6 +70,14 @@ docker run \
 --restart always \
 ppyycc/streamshield-proxy:latest
 ```
+## xiaoya
+```
+docker cp /volume1/docker/xiaoya/mycat.json xiaoya:/www/tvbox/cat/
+```
+- 猫影视
+```
+http://alist:alist@xxx.xxx.xxx:5678/tvbox/cat/mycat.json
+```
 ## DSM的Emby
 ```
 hypervisor.cpuid.v0
