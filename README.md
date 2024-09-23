@@ -44,6 +44,8 @@ rclone mount aliyun:share /volume1/DSM/emby/share1 --cache-dir /tmp --allow-othe
 ```
 ## CoreELEC
 ```
+ln -s /bin/fusermount /storage/.config/fusermount3
+vi /storage/.profile  export PATH=$PATH:/storage/.config
 rclone mount sharep:sharep /storage/webdav/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
 ```
 rclone mount sharep:sharep /storage/webdav/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
