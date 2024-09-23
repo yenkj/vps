@@ -42,6 +42,11 @@ url = http://0.0.0.0:8080
 vendor = other
 rclone mount aliyun:share /volume1/DSM/emby/share1 --cache-dir /tmp --allow-other --vfs-cache-mode writes --allow-non-empty
 ```
+## CoreELEC
+```
+rclone mount sharep:sharep /storage/webdav/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
+```
+rclone mount sharep:sharep /storage/webdav/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
 ## 进入docker
 ```
 docker ps -a
