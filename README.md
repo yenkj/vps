@@ -85,6 +85,26 @@ docker cp /volume1/docker/xiaoya/mycat.json xiaoya:/www/tvbox/cat/
 ```
 http://alist:alist@xxx.xxx.xxx:5678/tvbox/cat/mycat.json
 ```
+## pixman
+```
+services:
+  pixman:
+    image: pixman/pixman
+    restart: always
+    container_name: pixman
+    volumes:
+      - /volume1/docker/m3u:/app/app/data/m3u
+    environment:
+      - HAMI_SESSION_ID=pixman-064c13bd08e5962ff43ecc9976b3fb36
+      - HAMI_SERIAL_NO=445209991
+      - HAMI_SESSION_IP=1.161.63.144
+    ports:
+      - 6000:5000
+```
+- 无声音替换
+```
+docker cp /volume1/docker/m3u/litv.yaml pixman:/app/app/channel_list/
+```
 ## DSM的Emby
 ```
 hypervisor.cpuid.v0
