@@ -85,6 +85,12 @@ docker cp /volume1/docker/xiaoya/mycat.json xiaoya:/www/tvbox/cat/
 ```
 http://alist:alist@xxx.xxx.xxx:5678/tvbox/cat/mycat.json
 ```
+```
+docker cp /volume1/docker/xiaoya/cat.alist.min.js /www/tvbox/cat/libs/
+```
+```
+docker cp /volume1/docker/xiaoya/alist.min.js /www/tvbox/libs/
+```
 ## pixman
 ```
 services:
