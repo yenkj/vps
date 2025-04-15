@@ -55,9 +55,10 @@ docker ps -a
 docker exec -it abe31ff51ddd /bin/bash
 docker exec -it emby /bin/sh
 ```
-## pixman
+## 4gtv
 ```
 docker run -d --name=4gtv -p 6000:5000 -v /volume1/docker/m3u:/app/app/data/m3u --restart=always pixman/pixman
+docker run -d --name=woshishabi  -p 50007:5000 -p 8089:8089 --restart=always mybtjson/pixman-4gtv:latest
 ```
 ## php-env
 ```
