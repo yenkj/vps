@@ -40,7 +40,7 @@ messense/aliyundrive-webdav
 type = webdav
 url = http://0.0.0.0:8080
 vendor = other
-rclone mount aliyun:share /volume1/DSM/emby/share1 --cache-dir /tmp --allow-other --vfs-cache-mode writes --allow-non-empty
+rclone mount aliyun:share /volume1/DSM/mnt/share1 --cache-dir /tmp --allow-other --vfs-cache-mode writes --allow-non-empty
 ```
 ## CoreELEC
 ```
@@ -119,10 +119,10 @@ hypervisor.cpuid.v0
 ```
 sudo ln -s /bin/fusermount /bin/fusermount3
 vim /etc/crontab
-@reboot root rclone mount banana:share /volume1/DSM/emby/share --copy-links --allow-other --allow-non-empty --umask 000 --daemon
-@reboot root rclone mount pikpak:share /volume1/DSM/emby/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
-rclone mount my:share /volume1/DSM/emby/share --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
-@reboot root  rclone mount banana:share /volume1/DSM/emby/share  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
+@reboot root rclone mount banana:share /volume1/DSM/mnt/share --copy-links --allow-other --allow-non-empty --umask 000 --daemon
+@reboot root rclone mount pikpak:share /volume1/DSM/mnt/sharep --copy-links --allow-other --allow-non-empty --umask 000 --daemon
+rclone mount my:share /volume1/DSM/mnt/share --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
+@reboot root  rclone mount banana:share /volume1/DSM/mnt/share  --allow-non-empty --allow-other --vfs-cache-mode writes --dir-cache-time 25h --buffer-size 0M --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G
 @reboot root sleep 60;docker start emby
 ```
 ```
@@ -142,8 +142,8 @@ docker run \
 -p 8920:8920 \
 -v /volume1/docker/emby/config:/config \
 -v /volume1/docker/emby/system/traystrings:/system/traystrings \
--v /volume1/DSM/emby/share:/mnt/share \
--v /volume1/DSM/emby/sharep:/mnt/sharep \
+-v /volume1/DSM/mnt/share:/mnt/share \
+-v /volume1/DSM/mnt/sharep:/mnt/sharep \
 -v /volume1/docker/emby/system/Emby.Web.dll:/system/Emby.Web.dll \
 -v /volume1/docker/emby/system/MediaBrowser.Model.dll:/system/MediaBrowser.Model.dll \
 -v /volume1/docker/emby/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js:/system/dashboard-ui/modules/emby-apiclient/connectionmanager.js \
@@ -318,7 +318,7 @@ https://github.com/kapitainsky/RcloneBrowser/releases
 ```
 - 开始启动：`systemctl start rclone`
 - 设置开机自启：`systemctl enable rclone`
-- 卸载：`fusermount -qzu /volume1/DSM/emby/sharep`
+- 卸载：`fusermount -qzu /volume1/DSM/mnt/sharep`
 - 重启：`systemctl restart rclone`
 - 停止：`systemctl stop rclone`
 - 状态：`systemctl status rclone`
