@@ -182,9 +182,17 @@ display: flex; /* 如果不需要媒体库标题显示, 请将flex改为none */
 - 重载nginx `systemctl reload nginx`      
 - nginx文件夹 `/etc/nginx/conf.d`
 - 证书位置 `/root/.acme.sh/`
-- 反代实现第三方播放器
+
 ```
 docker run --name=nginx-m -p 8099:80 --restart=always -v /volume1/docker/emby/conf.d:/etc/nginx/conf.d -d nginx
+```
+- 第三方播放器插件
+```
+docker exec -it emby /bin/sh
+vi /system/dashboard-ui/index.html
+    <script src="apploader.js" defer></script>
+	<script src="https://emby-external-url.7o7o.cc/embyWebAddExternalUrl/embyLaunchPotplayer.js" defer></script>
+</body>
 ```
 ```
 nohup python3 ExternalUrl.py  > ExternalUrl.log 2>&1 &
