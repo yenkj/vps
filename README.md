@@ -195,34 +195,6 @@ vi /system/dashboard-ui/index.html
 </body>
 ```
 ```
-nohup python3 ExternalUrl.py  > ExternalUrl.log 2>&1 &
-```
-```
-server {
-    listen 80;
-    server_name us.199301.xyz;   
-    location / {
-    proxy_redirect off;  
-        proxy_set_header Host $host;  
-        proxy_set_header X-Real-IP $remote_addr;  
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
-		proxy_read_timeout 240s; 
-        proxy_pass http://192.168.2.189:8096/;  
-    if ( $request_uri ~* /Users/(.*)/Items/\d\d\d+.\?X-Emby-Client )
-    {
-	proxy_pass http://192.168.2.189:12345;
-    }
-    if ( $request_uri ~* redirect2player )
-    {
-	return 301 $arg_infuseurl;
-    }
-     if ($args ~ (^|.*)&MaxStreamingBitrate=\d*(.*)) {
-            set $args $1&MaxStreamingBitrate=1600000000$2;
-        }
-      }
-}
-```
-```
 server {
     listen 80;
     server_name localhost;   
